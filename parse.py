@@ -4,6 +4,13 @@ object-group network TEST-GROUP1
  network-object object SERVER2
  network-object object SERVER3
  network-object object SERVER4
+object-group network TEST-GROUP2
+ network-object object SERVER1
+object-group network TEST-GROUP3
+ network-object object SERVER2
+ network-object object SERVER3
+object-group network TEST-GROUP4
+ network-object object SERVER1
 """
 
 lines = input_string.splitlines()
