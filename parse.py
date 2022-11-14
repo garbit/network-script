@@ -7,20 +7,32 @@ object-group network TEST-GROUP1
 """
 
 lines = input_string.splitlines()
-
 object_groups = {}
+
+servers = {}
+
+current_group = ''
 
 for i in lines:
   line = i.split(' ')
   object_group_name = line[-1]
   item = line[0]
-
-  if item == 'object-group':
-    if object_group_name not in object_groups.keys():
-      object_groups[object_group_name] = []
-  else:
-    object_groups[object_group_name].append(object_group_name)
+  
+  if len(line) > 1:
+      if item == 'object-group':
+        if object_group_name not in object_groups:
+          object_groups[object_group_name] = []
+          current_group = object_group_name
+      else:
+        server_name = line[-1]      
+        object_groups[current_group].append(server_name)
+        if server_name not in servers:
+            servers[server_name] = []
+        
+        servers[server_name].append(current_group)
+        
 
 print(object_groups)
+print(servers)
 
   
