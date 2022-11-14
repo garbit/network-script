@@ -13,6 +13,8 @@ line_counter = 0
 for line in config_file_txt:
   line_index = line.find(public_ip)
   if line_index != -1:
-    print(config_file_txt[line_index - 1].find('object network'))
+    line_to_search = config_file_txt[line_index - 1]
+    object_name = line_to_search[line_to_search.find('object network'):-1].split(' ')[2]
+    
   
   line_counter = line_counter + 1
